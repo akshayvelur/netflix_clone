@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone__/widget/movies_slider.dart';
+import 'package:netflix_clone__/widget/home_widgets/next_watch.dart';
 
 class SideScroller extends StatelessWidget {
   final mostPopular;
-  const SideScroller({super.key, required this.mostPopular});
+  const SideScroller({super.key, required this.mostPopular,});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class SideScroller extends StatelessWidget {
               child: Text(snapshot.error.toString()),
             );
           } else if (snapshot.hasData) {
-            return MoviesSlider(snapshot: snapshot);
+            return NextWatchSlider(snapshot: snapshot);
           } else {
             return const Center(
               child: CircularProgressIndicator(),

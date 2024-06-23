@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone__/models/movie.dart';
+import 'package:netflix_clone__/models/movie_recomention.dart';
 import 'package:netflix_clone__/services/api.dart';
 import 'package:netflix_clone__/widget/accunt_loading.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix_clone__/widget/back_ground_clr.dart';
-import 'package:netflix_clone__/widget/card_one.dart';
-import 'package:netflix_clone__/widget/movies_slider.dart';
-import 'package:netflix_clone__/widget/temp.dart';
+import 'package:netflix_clone__/widget/home_widgets/back_ground_clr.dart';
+import 'package:netflix_clone__/widget/home_widgets/card_one.dart';
+import 'package:netflix_clone__/widget/home_widgets/detail_scroll_helper.dart';
+import 'package:netflix_clone__/widget/home_widgets/scroller_helper.dart';
+import 'package:netflix_clone__/widget/home_widgets/top_ten_scroll_helper.dart';
+import 'package:netflix_clone__/widget/scrollable_headline.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,12 +22,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late Future<List<Movie>> topratedMovies;
   late Future<List<Movie>> mostPopular;
+  late Future<List<Movie>> yourNextWatch;
+  late Future<List<Movie>> toptens;
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
     topratedMovies = Api().getUpcomingMovies();
     mostPopular = Api().gettrendingMovies();
+    yourNextWatch = Api().getNextWatch();
+    toptens = Api().getTopten();
+    // TODO: implement initState
+    super.initState();
   }
 
   @override
@@ -36,7 +43,7 @@ class _HomePageState extends State<HomePage> {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-                backgroundColor: Colors.transparent,
+                backgroundColor: Color.fromARGB(209, 69, 75, 104),
                 expandedHeight: 130,
                 floating: true,
                 pinned: true,
@@ -113,30 +120,18 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.w500),
                   ),
                 ),
-                SideScroller(mostPopular: mostPopular),
+                DetailScroller(movielist: mostPopular),
                 ScrollHeadline(
-                  title: "bhdf",
+                  title: "Your Next Watch",
                 ),
+                SideScroller(mostPopular: yourNextWatch),
+                ScrollHeadline(
+                  title: "Top 10 Movies in India Today",
+                ),
+                ToptenScroller(movielist: toptens)
               ],
             ),
           ),
         ),
       );
-}
-
-class ScrollHeadline extends StatelessWidget {
-  String title;
-  ScrollHeadline({super.key, required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 10),
-      child: Text(
-        "$title",
-        style: GoogleFonts.roboto(
-            color: Colors.white, fontSize: 19, fontWeight: FontWeight.w500),
-      ),
-    );
-  }
 }

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix_clone__/widget/back_ground_clr.dart';
-import 'package:netflix_clone__/widget/bottom_navigation.dart';
+import 'package:netflix_clone__/widget/home_widgets/back_ground_clr.dart';
 import 'package:netflix_clone__/widget/user_grid.dart';
 
 class UserSelection extends StatefulWidget {

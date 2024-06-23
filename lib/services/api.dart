@@ -15,8 +15,10 @@ class Api {
 
   static const _upComingUrl =
       'https://api.themoviedb.org/3/movie/upcoming?api_key=${Constants.apiKey}';
-  static const _Toprated =
-      'https://api.themoviedb.org/3/movie/upcoming?api_key=${Constants.apiKey}';
+  static const _Topten =
+      'https://api.themoviedb.org/3/person/popular?api_key=${Constants.apiKey}';
+  static const _yourNextwatch =
+      'https://api.themoviedb.org/3/movie/now_playing?api_key=${Constants.apiKey}';
 
   // for search
 
@@ -128,5 +130,28 @@ class Api {
       throw Exception("Failed to load movies");
     }
   }
+// your next watche
+
+  Future<List<Movie>> getNextWatch() async {
+    final response = await http.get(Uri.parse(_yourNextwatch));
+    if (response.statusCode == 200) {
+      final decodeData = jsonDecode(response.body)['results'] as List;
+      print(decodeData);
+      return decodeData.map((movie) => Movie.fromJson(movie)).toList();
+    } else {
+      throw Exception('something happend');
+    }
+  }
+
+  Future<List<Movie>> getTopten() async {
+    final response = await http.get(Uri.parse(_Topten));
+    print("hiii${response.statusCode}");
+    if (response.statusCode == 200) {
+      final decodeData = jsonDecode(response.body)['results'] as List;
+      print(decodeData);
+      return decodeData.map((movie) => Movie.fromJson(movie)).toList();
+    } else {
+      throw Exception('something happend');
+    }
+  }
 }
-  

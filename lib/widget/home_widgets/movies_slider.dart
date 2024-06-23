@@ -7,7 +7,7 @@ class MoviesSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: 230,
       width: double.infinity,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -28,7 +28,9 @@ class MoviesSlider extends StatelessWidget {
                 child: Column(
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(8),
+                          topRight: Radius.circular(8)),
                       child: SizedBox(
                         height: 170,
                         width: 115,
@@ -38,13 +40,10 @@ class MoviesSlider extends StatelessWidget {
                             '${Constants.imagePath}${snapshot.data![index].PosterPath}'),
                       ),
                     ),
-                    SizedBox(
-                      height: 5,
-                    ),
                     Container(
                       width: 115,
-                      height: 30,
-                      color: const Color.fromARGB(255, 0, 0, 0),
+                      height: 33,
+                      color: Color.fromARGB(255, 15, 21, 34),
                       child: Center(
                           child: Padding(
                         padding: const EdgeInsets.only(left: 15, right: 15),

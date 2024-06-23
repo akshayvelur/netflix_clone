@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone__/common/constant.dart';
-import 'package:netflix_clone__/widget/cardplay_button.dart';
+import 'package:netflix_clone__/widget/home_widgets/cardplay_button.dart';
 
 class OneCard extends StatelessWidget {
   const OneCard({super.key, required this.snapshot});
