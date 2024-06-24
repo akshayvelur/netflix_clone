@@ -18,7 +18,7 @@ class OneCard extends StatelessWidget {
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: NetworkImage(
-                    '${Constants.imagePath}${snapshot.data![Random().nextInt(1)].PosterPath}'),
+                    '${Constants.imagePath}${snapshot.data![Random().nextInt(2)].PosterPath}'),
                 fit: BoxFit.cover),
             // color: Colors.yellow,
             borderRadius: BorderRadius.circular(12),

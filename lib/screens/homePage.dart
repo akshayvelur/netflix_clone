@@ -25,12 +25,15 @@ class _HomePageState extends State<HomePage> {
   late Future<List<Movie>> mostPopular;
   late Future<List<Movie>> yourNextWatch;
   late Future<List<Movie>> toptens;
+  late Future<List<Movie>> newOn;
+
   @override
   void initState() {
     topratedMovies = Api().getUpcomingMovies();
     mostPopular = Api().gettrendingMovies();
     yourNextWatch = Api().getNextWatch();
     toptens = Api().getTopRatedMovies();
+    newOn = Api().getNewOn();
     // TODO: implement initState
     super.initState();
   }
@@ -149,6 +152,11 @@ class _HomePageState extends State<HomePage> {
                 height: 8,
               ),
               SideScroller(mostPopular: toptens),
+              ScrollHeadline(title: "New on Netflix"),
+              SizedBox(
+                height: 8,
+              ),
+              SideScroller(mostPopular: newOn),
             ]),
           ),
         ),

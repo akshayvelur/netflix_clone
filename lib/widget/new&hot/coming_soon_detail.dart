@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:netflix_clone__/common/constant.dart';
+import 'package:netflix_clone__/widget/coming_soon.dart';
 
-class HotSliderView extends StatelessWidget {
-  const HotSliderView({super.key, required this.snapshot});
+class ComingSliderView extends StatelessWidget {
+  const ComingSliderView({super.key, required this.snapshot});
   final AsyncSnapshot snapshot;
   @override
   formatDate(String date) {
@@ -31,12 +32,12 @@ class HotSliderView extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (context) =>
-                  //           DetailsScreen(movie: snapshot.data[index]),
-                  //     ));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ComingSoon(selectedMovie: snapshot.data![index]),
+                      ));
                 },
                 child: Column(
                   children: [

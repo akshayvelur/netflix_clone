@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix_clone__/models/movie.dart';
 import 'package:netflix_clone__/services/api.dart';
 import 'package:netflix_clone__/widget/font%20style/font_style.dart';
+import 'package:netflix_clone__/widget/new&hot/coming_soon_detail.dart';
 import 'package:netflix_clone__/widget/new&hot/hot_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,8 +21,8 @@ class _NewsAndHotState extends State<NewsAndHot> {
     // TODO: implement initState
 
     super.initState();
-    moreMovieDetail = Api().getTopRatedMovies();
-    everyOnewatched = Api().getUpcomingMovies();
+    everyOnewatched = Api().gettrendingMovies();
+    moreMovieDetail = Api().getNextWatch();
   }
 
   @override
@@ -64,17 +65,22 @@ class _NewsAndHotState extends State<NewsAndHot> {
               ),
               tabs: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 6, right: 6),
+                  padding: const EdgeInsets.only(left: 8, right: 8),
                   child: Container(
                     child: Text("🍿  Coming Soon"),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 6, right: 6),
+                  padding: const EdgeInsets.only(left: 8, right: 8),
                   child: Container(
-                    child: Text("🔥 Everyone's Watching"),
+                    height: 30,
+                    child: Center(
+                        child: Text(
+                      "🔥 Everyone's Watching",
+                      style: GoogleFonts.roboto(),
+                    )),
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -88,7 +94,7 @@ class _NewsAndHotState extends State<NewsAndHot> {
                       child: Text(snapshot.error.toString()),
                     );
                   } else if (snapshot.hasData) {
-                    return HotSliderView(
+                    return ComingSliderView(
                       snapshot: snapshot,
                     );
                   } else {

@@ -145,4 +145,18 @@ class Api {
       throw Exception('something happend');
     }
   }
+
+  Future<List<Movie>> getNewOn() async {
+    final response = await http.get(Uri.parse(_upComingUrl));
+    if (response.statusCode == 200) {
+      final decodeData = jsonDecode(response.body)['results'] as List;
+      print(decodeData);
+      List<Movie> movie =
+          decodeData.map((movie) => Movie.fromJson(movie)).toList();
+      movie.shuffle(Random());
+      return movie;
+    } else {
+      throw Exception('something happend');
+    }
+  }
 }

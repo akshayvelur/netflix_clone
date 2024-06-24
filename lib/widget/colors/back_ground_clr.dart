@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
-final bckClr = Colors.black;
+final bckClr = const Color.fromARGB(255, 37, 37, 37);
 final homeGradient = LinearGradient(
   colors: [
     Color.fromARGB(255, 69, 75, 104),
     Color.fromARGB(255, 76, 83, 116),
-    Color.fromARGB(255, 99, 106, 151),
+    // Color.fromARGB(255, 99, 106, 151),
     Color.fromARGB(255, 34, 42, 51),
+    const Color.fromARGB(255, 0, 0, 0),
+    const Color.fromARGB(255, 0, 0, 0),
+    const Color.fromARGB(255, 0, 0, 0),
     const Color.fromARGB(255, 0, 0, 0),
     const Color.fromARGB(255, 0, 0, 0)
   ],
