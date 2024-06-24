@@ -15,7 +15,7 @@ class NextWatchSlider extends StatelessWidget {
           itemCount: snapshot.data!.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(5),
               child: GestureDetector(
                 onTap: () {
                   // Navigator.push(
@@ -39,7 +39,7 @@ class NextWatchSlider extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 5,
+                      height: 2,
                     ),
                   ],
                 ),

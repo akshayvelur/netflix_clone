@@ -4,7 +4,7 @@ import 'package:netflix_clone__/screens/homePage.dart';
 import 'package:netflix_clone__/screens/my_netflix.dart';
 import 'package:netflix_clone__/screens/news_and_hot.dart';
 import 'package:netflix_clone__/widget/accunt_loading.dart';
-import 'package:netflix_clone__/widget/home_widgets/back_ground_clr.dart';
+import 'package:netflix_clone__/widget/colors/back_ground_clr.dart';
 
 class BottomNavi extends StatelessWidget {
   const BottomNavi({super.key});

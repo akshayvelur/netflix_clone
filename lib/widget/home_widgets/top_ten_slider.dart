@@ -16,7 +16,7 @@ class ToptenSlider extends StatelessWidget {
           itemCount: snapshot.data!.length - 10,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 3, right: 3, bottom: 3),
               child: GestureDetector(
                 onTap: () {
                   // Navigator.push(
@@ -31,7 +31,7 @@ class ToptenSlider extends StatelessWidget {
                     Container(
                       width: 60,
                       height: 170,
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: Color.fromARGB(5, 0, 0, 0),
                       child: Center(
                           child: Padding(
                               padding:
@@ -44,9 +44,7 @@ class ToptenSlider extends StatelessWidget {
                               ))),
                     ),
                     ClipRRect(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(8),
-                          topRight: Radius.circular(8)),
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
                       child: SizedBox(
                         height: 170,
                         width: 115,
@@ -55,6 +53,9 @@ class ToptenSlider extends StatelessWidget {
                             fit: BoxFit.cover,
                             '${Constants.imagePath}${snapshot.data![index].PosterPath}'),
                       ),
+                    ),
+                    SizedBox(
+                      height: 5,
                     ),
                   ],
                 ),

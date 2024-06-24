@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone__/common/constant.dart';
@@ -16,7 +18,7 @@ class OneCard extends StatelessWidget {
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: NetworkImage(
-                    '${Constants.imagePath}${snapshot.data![11].PosterPath}'),
+                    '${Constants.imagePath}${snapshot.data![Random().nextInt(1)].PosterPath}'),
                 fit: BoxFit.cover),
             // color: Colors.yellow,
             borderRadius: BorderRadius.circular(12),

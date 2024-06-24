@@ -5,7 +5,8 @@ import 'package:netflix_clone__/services/api.dart';
 import 'package:netflix_clone__/widget/accunt_loading.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix_clone__/widget/home_widgets/back_ground_clr.dart';
+import 'package:netflix_clone__/widget/colors/back_ground_clr.dart';
+import 'package:netflix_clone__/widget/font%20style/font_style.dart';
 import 'package:netflix_clone__/widget/home_widgets/card_one.dart';
 import 'package:netflix_clone__/widget/home_widgets/detail_scroll_helper.dart';
 import 'package:netflix_clone__/widget/home_widgets/scroller_helper.dart';
@@ -29,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     topratedMovies = Api().getUpcomingMovies();
     mostPopular = Api().gettrendingMovies();
     yourNextWatch = Api().getNextWatch();
-    toptens = Api().getTopten();
+    toptens = Api().getTopRatedMovies();
     // TODO: implement initState
     super.initState();
   }
@@ -40,20 +41,16 @@ class _HomePageState extends State<HomePage> {
       // backgroundColor: Color.fromARGB(255, 96, 96, 97),
       body: Container(
         decoration: BoxDecoration(gradient: appgradient),
-        child: CustomScrollView(
-          slivers: [
-            SliverAppBar(
+        child: DefaultTabController(
+          length: 3,
+          child: CustomScrollView(
+            slivers: [
+              SliverAppBar(
                 backgroundColor: Color.fromARGB(209, 69, 75, 104),
                 expandedHeight: 130,
                 floating: true,
                 pinned: true,
-                title: Text(
-                  "For $username",
-                  style: GoogleFonts.roboto(
-                      fontSize: 25,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
-                ),
+                title: Text("For $username", style: headLine),
                 actions: [
                   Icon(
                     Icons.search,
@@ -62,10 +59,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                   SizedBox(
                     width: 10,
-                  )
-                ]),
-            scrollData()
-          ],
+                  ),
+                ],
+              ),
+              scrollData()
+            ],
+          ),
         ),
       ),
     );
@@ -79,58 +78,78 @@ class _HomePageState extends State<HomePage> {
             decoration: BoxDecoration(
               gradient: homeGradient,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  child: SizedBox(
-                    child: FutureBuilder(
-                      future: topratedMovies,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasError) {
-                          return Center(
-                            child: Text(
-                              snapshot.error.toString(),
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          );
-                        } else if (snapshot.hasData) {
-                          return OneCard(
-                            snapshot: snapshot,
-                          );
-                        } else {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }
-                      },
-                    ),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              SizedBox(
+                child: SizedBox(
+                  child: FutureBuilder(
+                    future: topratedMovies,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) {
+                        return Center(
+                          child: Text(
+                            snapshot.error.toString(),
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        );
+                      } else if (snapshot.hasData) {
+                        return OneCard(
+                          snapshot: snapshot,
+                        );
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    },
                   ),
                 ),
-                SizedBox(
-                  height: 10,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text(
+                  "Continue Watching for $username",
+                  style: GoogleFonts.roboto(
+                      color: Colors.white,
+                      fontSize: 19,
+                      fontWeight: FontWeight.w500),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Text(
-                    "Continue Watching for $username",
-                    style: GoogleFonts.roboto(
-                        color: Colors.white,
-                        fontSize: 19,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-                DetailScroller(movielist: mostPopular),
-                ScrollHeadline(
-                  title: "Your Next Watch",
-                ),
-                SideScroller(mostPopular: yourNextWatch),
-                ScrollHeadline(
-                  title: "Top 10 Movies in India Today",
-                ),
-                ToptenScroller(movielist: toptens)
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              DetailScroller(movielist: mostPopular),
+              ScrollHeadline(
+                title: "Your Next Watch",
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              SideScroller(mostPopular: yourNextWatch),
+              ScrollHeadline(
+                title: "Top 10 Movies",
+              ),
+              ToptenScroller(movielist: toptens),
+              SizedBox(
+                height: 10,
+              ),
+              ScrollHeadline(title: "We Think You'll Love These"),
+              SizedBox(
+                height: 8,
+              ),
+              SideScroller(mostPopular: topratedMovies),
+              SizedBox(
+                height: 2,
+              ),
+              ScrollHeadline(title: "Today' Top Picks for You"),
+              SizedBox(
+                height: 8,
+              ),
+              SideScroller(mostPopular: toptens),
+            ]),
           ),
         ),
       );

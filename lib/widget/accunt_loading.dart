@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:netflix_clone__/widget/home_widgets/back_ground_clr.dart';
+import 'package:netflix_clone__/widget/colors/back_ground_clr.dart';
 import 'package:netflix_clone__/widget/bottom_navigation.dart';
 
 dynamic propick;

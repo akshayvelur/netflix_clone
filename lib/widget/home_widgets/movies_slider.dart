@@ -15,7 +15,7 @@ class MoviesSlider extends StatelessWidget {
           itemCount: snapshot.data!.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(5),
               child: GestureDetector(
                 onTap: () {
                   // Navigator.push(
@@ -40,10 +40,13 @@ class MoviesSlider extends StatelessWidget {
                             '${Constants.imagePath}${snapshot.data![index].PosterPath}'),
                       ),
                     ),
+                    SizedBox(
+                      height: 1,
+                    ),
                     Container(
                       width: 115,
                       height: 33,
-                      color: Color.fromARGB(255, 15, 21, 34),
+                      color: Color.fromARGB(185, 15, 21, 34),
                       child: Center(
                           child: Padding(
                         padding: const EdgeInsets.only(left: 15, right: 15),
