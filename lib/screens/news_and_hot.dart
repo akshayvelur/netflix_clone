@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone__/models/movie.dart';
+import 'package:netflix_clone__/screens/search.dart';
 import 'package:netflix_clone__/services/api.dart';
 import 'package:netflix_clone__/widget/font%20style/font_style.dart';
 import 'package:netflix_clone__/widget/new&hot/coming_soon_detail.dart';
@@ -36,18 +37,22 @@ class _NewsAndHotState extends State<NewsAndHot> {
             backgroundColor: Colors.black,
             title: Text("New & Hot", style: headLine),
             actions: [
-              Icon(
-                Icons.cast,
-                color: Colors.white,
-                size: 28,
-              ),
               SizedBox(
                 width: 10,
               ),
-              Icon(
-                Icons.account_box_rounded,
-                color: Colors.white,
-                size: 28,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SearchScreen(),
+                      ));
+                },
+                child: Icon(
+                  Icons.search,
+                  color: Colors.white,
+                  size: 28,
+                ),
               ),
               SizedBox(
                 width: 23,

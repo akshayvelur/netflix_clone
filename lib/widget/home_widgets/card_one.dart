@@ -12,7 +12,7 @@ class OneCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 24, right: 24, top: 10, bottom: 10),
+      padding: const EdgeInsets.only(left: 26, right: 26, top: 10, bottom: 10),
       child: GestureDetector(
         onTap: () {
           Navigator.push(
@@ -31,16 +31,8 @@ class OneCard extends StatelessWidget {
                   image: NetworkImage(
                       '${Constants.imagePath}${snapshot.data![7].PosterPath}'),
                   fit: BoxFit.cover),
-              // color: Colors.yellow,
               borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                // BoxShadow(
-                //   color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.5),
-                //   spreadRadius: 5,
-                //   blurRadius: 7,
-                //   offset: Offset(0, 3), // changes position of shadow
-                // ),
-              ]),
+              boxShadow: []),
           child: CardPlay(),
         ),
       ),

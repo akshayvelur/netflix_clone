@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone__/models/movie.dart';
-import 'package:netflix_clone__/models/movie_recomention.dart';
 import 'package:netflix_clone__/screens/search.dart';
 import 'package:netflix_clone__/services/api.dart';
 import 'package:netflix_clone__/widget/accunt_loading.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone__/widget/colors/back_ground_clr.dart';
 import 'package:netflix_clone__/widget/font%20style/font_style.dart';
@@ -51,7 +49,7 @@ class _HomePageState extends State<HomePage> {
             slivers: [
               SliverAppBar(
                 backgroundColor: Color.fromARGB(209, 69, 75, 104),
-                expandedHeight: 130,
+                expandedHeight: 50,
                 floating: true,
                 pinned: true,
                 title: Text("For $username", style: headLine),
