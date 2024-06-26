@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone__/models/movie.dart';
 import 'package:netflix_clone__/models/movie_recomention.dart';
+import 'package:netflix_clone__/screens/search.dart';
 import 'package:netflix_clone__/services/api.dart';
 import 'package:netflix_clone__/widget/accunt_loading.dart';
 
@@ -11,7 +12,7 @@ import 'package:netflix_clone__/widget/home_widgets/card_one.dart';
 import 'package:netflix_clone__/widget/home_widgets/detail_scroll_helper.dart';
 import 'package:netflix_clone__/widget/home_widgets/scroller_helper.dart';
 import 'package:netflix_clone__/widget/home_widgets/top_ten_scroll_helper.dart';
-import 'package:netflix_clone__/widget/scrollable_headline.dart';
+import 'package:netflix_clone__/widget/home_widgets/scrollable_headline.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -55,10 +56,19 @@ class _HomePageState extends State<HomePage> {
                 pinned: true,
                 title: Text("For $username", style: headLine),
                 actions: [
-                  Icon(
-                    Icons.search,
-                    color: Colors.white,
-                    size: 33,
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SearchScreen(),
+                          ));
+                    },
+                    child: Icon(
+                      Icons.search,
+                      color: Colors.white,
+                      size: 33,
+                    ),
                   ),
                   SizedBox(
                     width: 10,

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone__/common/constant.dart';
+import 'package:netflix_clone__/widget/detail/detail_view.dart';
 
 class ToptenSlider extends StatelessWidget {
-  const ToptenSlider({super.key, required this.snapshot});
   final AsyncSnapshot snapshot;
+  const ToptenSlider({super.key, required this.snapshot});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -19,18 +20,19 @@ class ToptenSlider extends StatelessWidget {
               padding: const EdgeInsets.only(left: 3, right: 3, bottom: 3),
               child: GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (context) =>
-                  //           DetailsScreen(movie: snapshot.data[index]),
-                  //     ));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailView(
+                          selectedMovie: snapshot.data[index],
+                        ),
+                      ));
                 },
                 child: Row(
                   children: [
                     Container(
                       width: 60,
-                      height: 170,
+                      height: 160,
                       color: Color.fromARGB(5, 0, 0, 0),
                       child: Center(
                           child: Padding(
@@ -46,7 +48,7 @@ class ToptenSlider extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(8)),
                       child: SizedBox(
-                        height: 170,
+                        height: 160,
                         width: 115,
                         child: Image.network(
                             filterQuality: FilterQuality.high,

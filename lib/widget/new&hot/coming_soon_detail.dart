@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:netflix_clone__/common/constant.dart';
-import 'package:netflix_clone__/widget/coming_soon.dart';
+import 'package:netflix_clone__/widget/new&hot/coming_soon_detailview.dart';
 
 class ComingSliderView extends StatelessWidget {
   const ComingSliderView({super.key, required this.snapshot});

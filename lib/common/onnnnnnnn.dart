@@ -186,6 +186,7 @@
 //       );
 // }
 void main() {
-  String ab = "andd";
-  ab.toUpperCase();
+  List<String> an = ["akshay", "ggdhfdhf"];
+  String ab = an.join();
+  print(ab);
 }

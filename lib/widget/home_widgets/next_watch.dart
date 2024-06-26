@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone__/common/constant.dart';
+import 'package:netflix_clone__/widget/detail/detail_view.dart';
 
 class NextWatchSlider extends StatelessWidget {
   const NextWatchSlider({super.key, required this.snapshot});
@@ -7,7 +8,7 @@ class NextWatchSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 190,
       width: double.infinity,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -18,19 +19,20 @@ class NextWatchSlider extends StatelessWidget {
               padding: const EdgeInsets.all(5),
               child: GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (context) =>
-                  //           DetailsScreen(movie: snapshot.data[index]),
-                  //     ));
+                 Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailView(
+                          selectedMovie: snapshot.data[index],
+                        ),
+                      ));
                 },
                 child: Column(
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: SizedBox(
-                        height: 170,
+                        height: 160,
                         width: 115,
                         child: Image.network(
                             filterQuality: FilterQuality.high,

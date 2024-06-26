@@ -63,6 +63,7 @@ class Api {
   }
 
   // search
+
   Future<SearchModel> getSearchMovies(String searchText) async {
     endPoint = "search/tv?query=$searchText";
     final url = "$baseUrl$endPoint";
@@ -104,7 +105,7 @@ class Api {
 
   Future<MovieRecomentation> getPopularMovies() async {
     try {
-      final response = await http.get(Uri.parse(_trendingUrl));
+      final response = await http.get(Uri.parse(_yourNextwatch));
 
       switch (response.statusCode) {
         case 200:
@@ -157,6 +158,38 @@ class Api {
       return movie;
     } else {
       throw Exception('something happend');
+    }
+  }
+
+  Future<MovieRecomentation> getgames() async {
+    try {
+      final response = await http.get(Uri.parse(_yourNextwatch));
+
+      switch (response.statusCode) {
+        case 200:
+          print("Response Status: ${response.statusCode}");
+          return MovieRecomentation.fromJson(jsonDecode(response.body));
+        case 400:
+          print("Bad Request: ${response.statusCode} ${response.reasonPhrase}");
+          throw Exception("Bad Request: Failed to load movies");
+        case 401:
+          print(
+              "Unauthorized: ${response.statusCode} ${response.reasonPhrase}");
+          throw Exception("Unauthorized: Failed to load movies");
+        case 404:
+          print("Not Found: ${response.statusCode} ${response.reasonPhrase}");
+          throw Exception("Not Found: Failed to load movies");
+        case 500:
+          print(
+              "Internal Server Error: ${response.statusCode} ${response.reasonPhrase}");
+          throw Exception("Internal Server Error: Failed to load movies");
+        default:
+          print("Error: ${response.statusCode} ${response.reasonPhrase}");
+          throw Exception("Failed to load movies");
+      }
+    } catch (e) {
+      print("Exception caught: $e");
+      throw Exception("Failed to load movies");
     }
   }
 }

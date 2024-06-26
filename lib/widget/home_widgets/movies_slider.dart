@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone__/common/constant.dart';
+import 'package:netflix_clone__/widget/detail/detail_view.dart';
 
 class MoviesSlider extends StatelessWidget {
   const MoviesSlider({super.key, required this.snapshot});
@@ -18,12 +19,13 @@ class MoviesSlider extends StatelessWidget {
               padding: const EdgeInsets.all(5),
               child: GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (context) =>
-                  //           DetailsScreen(movie: snapshot.data[index]),
-                  //     ));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailView(
+                          selectedMovie: snapshot.data[index],
+                        ),
+                      ));
                 },
                 child: Column(
                   children: [
@@ -32,7 +34,7 @@ class MoviesSlider extends StatelessWidget {
                           topLeft: Radius.circular(8),
                           topRight: Radius.circular(8)),
                       child: SizedBox(
-                        height: 170,
+                        height: 160,
                         width: 115,
                         child: Image.network(
                             filterQuality: FilterQuality.high,
